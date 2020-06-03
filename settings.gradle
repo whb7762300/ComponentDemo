@@ -1,0 +1,4 @@
+include ':listModule'
+include ':commonLib'
+include ':app'
+rootProject.name = "ComponentDemo1"

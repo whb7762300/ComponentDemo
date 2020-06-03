@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// Define versions in a single place
+ext {
+    isModule = false
+    // Sdk and tools
+    minSdkVersion = 21
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    // App version name
+    versionName = '1.0.0'//只能是X.X.X形式(X代表数字),否则版本更新提示会有问题
+    versionCode = 100000
+    //数据库版本号
+    dbSchemaVersion = 37
+
+    // App dependencies
+    androidxVersion = '1.1.0'
+    androidxLegacyVersion = '1.0.0'
+    androidxRecyclerviewVersion = '1.1.0'
+    junitVersion = '4.12'
+    gsonVersion = '2.8.6'
+    retrofitVersion = '2.7.1'
+    cookieJarVersion = 'v1.0.0'
+    retrofitUrlManagerVersion = '1.4.0'
+    butterknifeVersion = '10.2.1'
+    blockcanaryVersion = '1.5.0'
+    leakcanaryVersion = '2.0'
+    arouterApiVersion ='1.5.0'
+    arouterCompilerVersion ='1.2.2'
+}
