@@ -1,33 +1,36 @@
 package com.jackwang.component1;
 
-import android.os.Bundle;
-import android.util.Log;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.jackwang.commonlib.RouterConstants;
+import com.jackwang.commonlib.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.tv_jump)
     TextView tvJump;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public int getResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     @OnClick(R.id.tv_jump)
     public void onViewClicked() {
-        Log.e("hehe", "点击了");
-        ARouter.getInstance().build(RouterConstants.LIST_ACTIVITY).navigation();
+        //只有通过intent uri形式或者外部网页url跳转的时候 SchemeFilterActivity才会有启动
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("whb://demo/app/list?name=lisi"));
+        startActivity(intent);
+        //ARouter.getInstance().build(Uri.parse("whb://demo/app/list?name=lisi")).navigation();
+        //ARouter.getInstance().build(RouterConstants.LIST_ACTIVITY).navigation();
     }
 }
